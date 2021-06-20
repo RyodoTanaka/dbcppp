@@ -1,0 +1,23 @@
+{
+    "name": "dbcppp",
+    "version": "3.0.1",
+    "license" : "MIT",
+    "keywords": "c++, dbc, parser, decoder, encoder",
+    "description": "A C/C++ DBC file parser based on boost.spirit. This library is designed for decoding performance.",
+    "authors":
+    [
+        {
+            "name": "xR3b0rn",
+	        "maintainer": false
+        },
+        {
+            "name": "Ryodo Tanaka",
+            "email": "ryodo.tanaka@arav.jp",
+            "maintainer": true
+        }],
+    "frameworks": ["arduino"],
+    "platforms": ["teensy41"]
+    "build": {
+        "flags": [-DCMAKE_BUILD_TYPE=Release],
+    }
+}
