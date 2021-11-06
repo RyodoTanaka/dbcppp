@@ -1,19 +1,23 @@
 
 cmake_minimum_required(VERSION 3.12)
-
 project("libdbcppp" VERSION 0.1.0)
 
 option(build_tests "Build tests" ON)
 option(build_examples "Build examples" ON)
 
 set(CMAKE_CXX_STANDARD 17)
-set(CMAKE_STATIC_LIBRARY_PREFIX "")
-set(CMAKE_SHARED_LIBRARY_PREFIX "")
-set(CMAKE_RUNTIME_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/bin)
 
 if (CMAKE_CXX_COMPILER_ID MATCHES "MSVC")
 	add_definitions("/bigobj")
 endif()
+
+find_package(catkin REQUIRED)
+catkin_package(
+  INCLUDE_DIRS include
+  LIBRARIES
+  ${PROJECT_NAME}
+  CATKIN_DEPENDS ${ROS_DEPENDS}
+  )
 
 include_directories("include")
 include_directories("third-party/libxml2/include")
@@ -43,7 +47,6 @@ target_sources("libxmlmm"
     PRIVATE ${libxmlmm_header}
     PRIVATE ${libxmlmm_src}
 )
-
 install(
     TARGETS "libxmlmm"
     DESTINATION ${CMAKE_INSTALL_LIBDIR})
@@ -63,3 +66,11 @@ endif()
 set(CMAKE_STATIC_LIBRARY_PREFIX "")
 set(CMAKE_SHARED_LIBRARY_PREFIX "")
 set(CMAKE_RUNTIME_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/bin)
+
+# For catkin #
+install(TARGETS ${PROJECT_NAME}
+  LIBRARY DESTINATION ${CATKIN_PACKAGE_LIB_DESTINATION}
+  ARCHIVE DESTINATION ${CATKIN_PACKAGE_LIB_DESTINATION}
+  RUNTIME DESTINATION ${CATKIN_PACKAGE_BIN_DESTINATION}
+  )  
+

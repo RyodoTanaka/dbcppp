@@ -1,0 +1,24 @@
+<?xml version="1.0"?>
+
+<package format="2">
+
+  <name>libdbcppp</name>
+  <version>3.2.1</version>
+  <description>
+    C/C++ DBC file parser/tool 
+  </description>
+  
+  <maintainer email="todo@example.com">xR3b0rn</maintainer>
+  <maintainer email="ryodo.tanaka@arav.jp">RyodoTanaka</maintainer>
+  <license>MIT</license>
+
+  <author>xR3b0rn</author>
+  <author email="ryodo.tanaka@arav.jp">RyodoTanaka</author>
+  
+  <buildtool_depend>catkin</buildtool_depend>
+  <depend>roscpp</depend>
+
+  <export>
+  </export>
+
+</package>
